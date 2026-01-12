@@ -2,6 +2,7 @@
 
 #include "Reptile.hpp"
 #include <iostream>
+#include <memory>
 
 /**
  * @file Snake.hpp
@@ -69,7 +70,7 @@ namespace ws {
          * @brief Static factory method to create a Snake from an input stream.
          * @return Pointer to new Snake object or nullptr if parsing fails.
          */
-        static Snake* fromFileStream(std::istream& is);
+         static std::unique_ptr<Snake> fromFileStream(std::istream& is);
     };
 
 }

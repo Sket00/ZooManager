@@ -2,6 +2,7 @@
 
 #include "Bird.hpp"
 #include <iostream>
+#include <memory>
 
 /**
  * @file Eagle.hpp
@@ -69,7 +70,7 @@ namespace ws {
          * @brief Static factory method to create an Eagle from an input stream.
          * @return Pointer to new Eagle object or nullptr if parsing fails.
          */
-        static Eagle* fromFileStream(std::istream& is);
+        static std::unique_ptr<Eagle> fromFileStream(std::istream& is);
     };
 
 }

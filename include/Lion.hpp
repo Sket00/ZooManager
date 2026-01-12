@@ -2,6 +2,7 @@
 
 #include "Mammal.hpp"
 #include <iostream>
+#include <memory>
 
 /**
  * @file Lion.hpp
@@ -70,7 +71,7 @@ namespace ws {
          * @brief Static factory method to create a Lion from an input stream.
          * @return Pointer to new Lion object or nullptr if parsing fails.
          */
-        static Lion* fromFileStream(std::istream& is);
+        static std::unique_ptr<Lion> fromFileStream(std::istream& is);
     };
 
 }

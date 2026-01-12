@@ -33,7 +33,7 @@ namespace ws {
            << " | Trained: " << (m_isTrained ? "Yes" : "No");
     }
 
-    Eagle* Eagle::fromFileStream(std::istream& is) {
+    std::unique_ptr<Eagle> Eagle::fromFileStream(std::istream& is) {
         unsigned int id;
         std::string n, g, dateStr, beak;
         int a;
@@ -41,7 +41,7 @@ namespace ws {
         bool fly, trained;
         
         if (is >> id >> n >> g >> a >> w >> dateStr >> wings >> fly >> beak >> vision >> speed >> trained) {
-            auto eagle = new Eagle(n, g, a, w, Date(dateStr), vision, speed, trained);
+            auto eagle = std::make_unique<Eagle>(n, g, a, w, Date(dateStr), vision, speed, trained);
             eagle->forceId(id);
             return eagle;
         }

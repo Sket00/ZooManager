@@ -33,7 +33,7 @@ namespace ws {
            << " | Shedding: every " << m_sheddingFrequencyDays << " days";
     }
 
-    Snake* Snake::fromFileStream(std::istream& is) {
+    std::unique_ptr<Snake> Snake::fromFileStream(std::istream& is) {
         unsigned int id;
         std::string n, g, dateStr, texture;
         int a, shedding;
@@ -41,7 +41,7 @@ namespace ws {
         bool venom, heat, constrictor;
         
         if (is >> id >> n >> g >> a >> w >> dateStr >> venom >> texture >> heat >> length >> constrictor >> shedding) {
-            auto snake = new Snake(n, g, a, w, Date(dateStr), length, constrictor, shedding);
+            auto snake = std::make_unique<Snake>(n, g, a, w, Date(dateStr), length, constrictor, shedding);
             snake->forceId(id);
             return snake;
         }

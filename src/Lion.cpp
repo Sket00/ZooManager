@@ -38,7 +38,7 @@ namespace ws {
            << " | Roar: " << m_roarVolumeDecibels << "dB";
     }
 
-    Lion* Lion::fromFileStream(std::istream& is) {
+    std::unique_ptr<Lion> Lion::fromFileStream(std::istream& is) {
         unsigned int id;
         std::string n, g, dateStr, diet;
         int a, pride, volume;
@@ -46,7 +46,7 @@ namespace ws {
         bool fur, aggressive; 
         
         if (is >> id >> n >> g >> a >> w >> dateStr >> fur >> aggressive >> diet >> mane >> pride >> volume) {
-            auto lion = new Lion(n, g, a, w, Date(dateStr), mane, pride, volume);
+            auto lion = std::make_unique<Lion>(n, g, a, w, Date(dateStr), mane, pride, volume);
             lion->forceId(id); 
             return lion;
         }

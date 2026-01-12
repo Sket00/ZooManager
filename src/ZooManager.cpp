@@ -67,36 +67,36 @@ namespace ws {
     }
 
     void ZooManager::loadFromFile(const std::string& filename) {
-        std::ifstream file(filename);
-        if (!file.is_open()) {
-            std::cout << "File " << filename << " missing. Starting fresh.\n";
-            return;
-        }
+    std::ifstream file(filename);
+    if (!file.is_open()) {
+        std::cout << "File " << filename << " missing. Starting fresh.\n";
+        return;
+    }
 
-        clearZoo();
-        std::string type;
+    clearZoo();
+    std::string type;
+    
+    while (file >> type) {
+        std::unique_ptr<Animal> loadedAnimal = nullptr;
         
-        while (file >> type) {
-            Animal* loadedAnimal = nullptr;
-
-            if (type == "Lion") {
-                loadedAnimal = Lion::fromFileStream(file);
-            } else if (type == "Eagle") {
-                loadedAnimal = Eagle::fromFileStream(file);
-            } else if (type == "Snake") {
-                loadedAnimal = Snake::fromFileStream(file);
-            }
-
-            if (loadedAnimal) {
-                addAnimal(std::unique_ptr<Animal>(loadedAnimal));
-            }
+        if (type == "Lion") {
+            loadedAnimal = Lion::fromFileStream(file);
+        } else if (type == "Eagle") {
+            loadedAnimal = Eagle::fromFileStream(file);
+        } else if (type == "Snake") {
+            loadedAnimal = Snake::fromFileStream(file);
         }
 
-        std::vector<unsigned int> loadedIds;
-            for (const auto& animal : m_animals) {
-                loadedIds.push_back(animal->getId());
-            }
-        Animal::rebuildFreeIds(loadedIds);
-        std::cout << "Loaded " << m_animals.size() << " animals from file.\n";
+        if (loadedAnimal) {
+            addAnimal(std::move(loadedAnimal));
+        }
+    }
+
+    std::vector<unsigned int> loadedIds;
+    for (const auto& animal : m_animals) {
+        loadedIds.push_back(animal->getId());
+    }
+    Animal::rebuildFreeIds(loadedIds);
+    std::cout << "Loaded " << m_animals.size() << " animals from file.\n";
     }
 }
