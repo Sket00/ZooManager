@@ -33,7 +33,7 @@ namespace ws {
         Date m_arrivalDate;
 
     protected:
-        static const int MIN_WEIGHT = 0;
+        static constexpr int MIN_WEIGHT = 0;
         // ID Management methods
         static void releaseId(unsigned int idToRelease);
         static void resetIdCounter();

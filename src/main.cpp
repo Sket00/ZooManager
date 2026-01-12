@@ -51,6 +51,7 @@ int main() {
                     std::cout << "ID to remove: ";
                     std::cin >> id;
                     zoo.removeAnimalById(id);
+                    std::cout << "Removed: Animal with ID: " << id << "\n";
                     break;
                 }
                 case 4: {
@@ -68,6 +69,7 @@ int main() {
                 }
                 case 5:
                     zoo.saveToFile("zoo_db.txt");
+                    std::cout << "Data saved to file zoo_db.txt\n";
                     running = false;
                     break;
                 default:

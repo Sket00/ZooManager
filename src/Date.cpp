@@ -51,7 +51,7 @@ namespace ws {
             throw std::out_of_range("Month must be between 1-12");
         }
 
-        int daysInMonth[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    int daysInMonth[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         if (isLeapYear(y)) {
             daysInMonth[2] = 29;
         }
