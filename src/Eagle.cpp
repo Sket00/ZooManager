@@ -6,8 +6,8 @@ namespace ws {
     Eagle::Eagle() : Bird(), m_visionRangeMeters(0), m_divingSpeedKmh(0), m_isTrained(false) {}
 
     Eagle::Eagle(const std::string& n, const std::string& g, int a, double w, const Date& d, 
-                 double vision, double speed, bool trained)
-        : Bird(n, g, a, w, d, 2.3, true, "Yellow"), 
+                 double wings, bool fly, const std::string& beak, double vision, double speed, bool trained)
+        : Bird(n, g, a, w, d, wings, fly, beak), 
           m_visionRangeMeters(vision), m_divingSpeedKmh(speed), m_isTrained(trained) {}
 
     void Eagle::setVisionRange(double range) {
@@ -41,7 +41,7 @@ namespace ws {
         bool fly, trained;
         
         if (is >> id >> n >> g >> a >> w >> dateStr >> wings >> fly >> beak >> vision >> speed >> trained) {
-            auto eagle = std::make_unique<Eagle>(n, g, a, w, Date(dateStr), vision, speed, trained);
+            auto eagle = std::make_unique<Eagle>(n, g, a, w, Date(dateStr), wings, fly, beak, vision, speed, trained);
             eagle->forceId(id);
             return eagle;
         }

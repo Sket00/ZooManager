@@ -32,7 +32,7 @@ namespace ws {
          * @brief Parameterized constructor for a Snake.
          */
         Snake(const std::string& n, const std::string& g, int a, double w, const Date& d, 
-              double length, bool constrictor, int shedding);
+              bool venom, const std::string& texture, bool heat,double length, bool constrictor, int shedding);
 
         // Getters
         double getLength() const { return m_lengthMeters; }

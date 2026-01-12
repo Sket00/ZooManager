@@ -35,8 +35,8 @@ namespace ws {
     }
 
     void Animal::setGender(const std::string& g) {
-        if (g != "M" && g != "F") throw std::invalid_argument("Gender must be M or F");
-        m_gender = g;
+        if (g != "M" && g != "F" && g != "f" && g != "m") throw std::invalid_argument("Gender must be M or F");
+        m_gender = toupper(g[0]);
     }
 
     void Animal::setAge(int a) {
@@ -87,7 +87,8 @@ namespace ws {
     }
 
     void Animal::serialize(std::ostream& os) const {
-        os << m_id << " " << m_name << " " << m_gender << " " << m_age << " " << m_weight << " " << m_arrivalDate.toString();
+        os << m_id << " " << m_name << " " << m_gender << " " << m_age << " " << m_weight << " "
+        << m_arrivalDate.toString();
     }
 
     void Animal::printDetails(std::ostream& os) const {

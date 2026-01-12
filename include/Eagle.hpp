@@ -32,7 +32,7 @@ namespace ws {
          * @brief Parameterized constructor for an Eagle.
          */
         Eagle(const std::string& n, const std::string& g, int a, double w, const Date& d, 
-              double vision, double speed, bool trained);
+              double wings, bool fly, const std::string& beak, double vision, double speed, bool trained);
 
         // Getters
         double getVisionRange() const { return m_visionRangeMeters; }

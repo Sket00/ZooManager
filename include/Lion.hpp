@@ -32,7 +32,7 @@ namespace ws {
          * @brief Parameterized constructor for a Lion.
          */
         Lion(const std::string& n, const std::string& g, int a, double w, const Date& d, 
-             double mane, int pride, int volume);
+            bool fur, bool aggressive, const std::string& diet, double mane, int pride, int volume);
 
         // Getters
         double getManeLength() const { return m_maneLength; }

@@ -9,7 +9,7 @@ namespace ws {
         while (!(std::cin >> value)) {
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Invalid input. " << datain;
+            std::cout << "Invalid input. " << datain << "\n";
         }
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
         return value;

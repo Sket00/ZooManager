@@ -6,8 +6,8 @@ namespace ws {
     Lion::Lion() : Mammal(), m_maneLength(0), m_prideSize(0), m_roarVolumeDecibels(0) {}
 
     Lion::Lion(const std::string& n, const std::string& g, int a, double w, const Date& d, 
-               double mane, int pride, int volume)
-        : Mammal(n, g, a, w, d, true, false, "Carnivore"), 
+              bool fur, bool aggressive,const std::string& diet, double mane, int pride, int volume)
+        : Mammal(n, g, a, w, d, fur, aggressive, diet), 
           m_maneLength(mane), m_prideSize(pride), m_roarVolumeDecibels(volume) {}
 
     void Lion::setManeLength(double len) {
@@ -46,7 +46,7 @@ namespace ws {
         bool fur, aggressive; 
         
         if (is >> id >> n >> g >> a >> w >> dateStr >> fur >> aggressive >> diet >> mane >> pride >> volume) {
-            auto lion = std::make_unique<Lion>(n, g, a, w, Date(dateStr), mane, pride, volume);
+            auto lion = std::make_unique<Lion>(n, g, a, w, Date(dateStr), fur, aggressive, diet, mane, pride, volume);
             lion->forceId(id); 
             return lion;
         }

@@ -21,7 +21,7 @@ namespace ws {
             return;
         }
 
-        std::cout << "=== ZOO ANIMAL LIST ===\n";
+        std::cout << "--- ZOO ANIMAL LIST ---\n";
         for (const auto& animal : m_animals) {
             std::cout << *animal << "\n";
             std::cout << "---------------------------------------------------\n";

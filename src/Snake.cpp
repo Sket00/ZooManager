@@ -6,8 +6,8 @@ namespace ws {
     Snake::Snake() : Reptile(), m_lengthMeters(0), m_isConstrictor(false), m_sheddingFrequencyDays(0) {}
 
     Snake::Snake(const std::string& n, const std::string& g, int a, double w, const Date& d, 
-                 double length, bool constrictor, int shedding)
-        : Reptile(n, g, a, w, d, true, "Scaly", true), 
+                 bool venom, const std::string& texture, bool heat, double length, bool constrictor, int shedding)
+        : Reptile(n, g, a, w, d, venom, texture, heat), 
           m_lengthMeters(length), m_isConstrictor(constrictor), m_sheddingFrequencyDays(shedding) {}
 
     void Snake::setLength(double len) {
@@ -41,7 +41,7 @@ namespace ws {
         bool venom, heat, constrictor;
         
         if (is >> id >> n >> g >> a >> w >> dateStr >> venom >> texture >> heat >> length >> constrictor >> shedding) {
-            auto snake = std::make_unique<Snake>(n, g, a, w, Date(dateStr), length, constrictor, shedding);
+            auto snake = std::make_unique<Snake>(n, g, a, w, Date(dateStr), venom, texture, heat, length, constrictor, shedding);
             snake->forceId(id);
             return snake;
         }
