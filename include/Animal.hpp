@@ -19,6 +19,8 @@ namespace ws {
      * Manages unique IDs and basic attributes like name, age, and weight.
      */
     class Animal {
+        friend class ZooManager;
+        
     private:
         static unsigned int m_nextId;
         static std::set<unsigned int> m_freeIds;
@@ -32,6 +34,16 @@ namespace ws {
 
     protected:
         static const int MIN_WEIGHT = 0;
+        // ID Management methods
+        static void releaseId(unsigned int idToRelease);
+        static void resetIdCounter();
+        static void rebuildFreeIds(const std::vector<unsigned int>& existingIds);
+        
+        /**
+         * @brief Forces a specific ID (used when loading from file).
+         */
+        void forceId(unsigned int newId);
+        static void updateNextId(unsigned int idFromFile);
 
     public:
         /**
@@ -83,17 +95,6 @@ namespace ws {
          * @brief Sets the arrival date.
          */
         void setArrivalDate(const Date& d);
-
-        // ID Management methods
-        static void releaseId(unsigned int idToRelease);
-        static void resetIdCounter();
-        static void rebuildFreeIds(const std::vector<unsigned int>& existingIds);
-        
-        /**
-         * @brief Forces a specific ID (used when loading from file).
-         */
-        void forceId(unsigned int newId);
-        static void updateNextId(unsigned int idFromFile);
 
         /**
          * @brief Serializes animal data to a stream.
