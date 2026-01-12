@@ -36,31 +36,44 @@ namespace ws {
 
     private:
         /**
-         * @brief Helper template to safely get input from std::cin.
-         * Clears buffer on failure.
+         * @brief Safely reads input from stdin with validation and error handling.
+         * @tparam T Type of value to read
+         * @param prompt Message displayed to user
+         * @return Validated input value
+         * 
+         * Repeatedly prompts until valid input is received.
+         * Clears input buffer on failure.
          */
         template <typename T>
         static T safeInput(const std::string& prompt);
 
-        // Input helpers
+        // --- Data Input Methods ---
+        
+        /// @name Animal Creation Helpers
+        /// Collect data for specific animal types during creation
+        /// @{
         static void inputAnimalData(Animal* animal);
         static void inputMammalData(Mammal* mammal);
         static void inputBirdData(Bird* bird);
         static void inputReptileData(Reptile* reptile);
-        
         static void inputLionData(Lion* lion);
         static void inputEagleData(Eagle* eagle);
         static void inputSnakeData(Snake* snake);
+        /// @}
 
-        // Edit menu helpers
+        // --- Edit Menu Methods ---
+        
+        /// @name Interactive Edit Menus
+        /// Display menus and handle editing for specific animal types
+        /// @{
         static void editAnimalMenu(Animal* animal);
         static void editMammalMenu(Mammal* mammal);
         static void editBirdMenu(Bird* bird);
         static void editReptileMenu(Reptile* reptile);
-        
         static void editLionMenu(Lion* lion);
         static void editEagleMenu(Eagle* eagle);
         static void editSnakeMenu(Snake* snake);
+        /// @}
     };
 
 }

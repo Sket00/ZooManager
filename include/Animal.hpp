@@ -33,18 +33,38 @@ namespace ws {
         Date m_arrivalDate;
 
     protected:
+        /// Minimum allowed weight
         static constexpr int MIN_WEIGHT = 0;
-        // ID Management methods
+        
+        /**
+         * @brief Releases an ID back to the pool for reuse.
+         * @param idToRelease ID to be released
+         */
         static void releaseId(unsigned int idToRelease);
+        
+        /**
+         * @brief Resets the ID counter to initial state.
+         */
         static void resetIdCounter();
+        
+        /**
+         * @brief Rebuilds the free IDs pool from existing IDs.
+         * @param existingIds Vector of currently used IDs
+         */
         static void rebuildFreeIds(const std::vector<unsigned int>& existingIds);
         
         /**
-         * @brief Forces a specific ID (used when loading from file).
+         * @brief Forces a specific ID for this object (used when loading from file).
+         * @param newId ID to assign
          */
         void forceId(unsigned int newId);
+        
+        /**
+         * @brief Updates the next ID counter based on loaded ID.
+         * @param idFromFile ID loaded from file
+         */
         static void updateNextId(unsigned int idFromFile);
-
+        
     public:
         /**
          * @brief Default constructor. Assigns a unique ID automatically.
