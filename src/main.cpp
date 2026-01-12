@@ -34,7 +34,7 @@ int main() {
                 clearInput();
                 continue;
             }
-
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             switch (choice) {
                 case 1: {
                     auto newAnimal = ws::DataIO::createAnimalSelection();
