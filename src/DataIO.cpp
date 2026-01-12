@@ -76,7 +76,7 @@ namespace ws {
 
         while (true) {
             try {
-                animal->setWeight(safeInput<double>("Weight: "));
+                animal->setWeight(safeInput<double>("Weight (kg): "));
                 break;
             } catch (const std::exception& e) { std::cout << e.what() << "\n"; }
         }
@@ -122,7 +122,7 @@ namespace ws {
         std::cout << "--- Lion Info ---\n";
         while(true) {
             try {
-                lion->setManeLength(safeInput<double>("Mane Length: "));
+                lion->setManeLength(safeInput<double>("Mane Length (cm): "));
                 break;
             } catch(const std::exception& e) { std::cout << e.what() << "\n"; }
         }
