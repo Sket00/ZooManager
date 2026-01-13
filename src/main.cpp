@@ -50,8 +50,8 @@ int main() {
                     int id;
                     std::cout << "ID to remove: ";
                     std::cin >> id;
+                    std::cout << "Removed animal with ID: " << id << "\n";
                     zoo.removeAnimalById(id);
-                    std::cout << "Removed: Animal with ID: " << id << "\n";
                     break;
                 }
                 case 4: {

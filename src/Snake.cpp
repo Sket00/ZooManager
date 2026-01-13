@@ -11,12 +11,12 @@ namespace ws {
           m_lengthMeters(length), m_isConstrictor(constrictor), m_sheddingFrequencyDays(shedding) {}
 
     void Snake::setLength(double len) {
-        if(len < 0) throw std::invalid_argument("Length cannot be negative");
+        if(len <= 0) throw std::invalid_argument("Length cannot be negative");
         m_lengthMeters = len;
     }
     void Snake::setIsConstrictor(bool c) { m_isConstrictor = c; }
     void Snake::setSheddingFrequency(int days) {
-        if(days < 0) throw std::invalid_argument("Shedding frequency cannot be negative");
+        if(days <= 0) throw std::invalid_argument("Shedding frequency cannot be negative");
         m_sheddingFrequencyDays = days;
     }
 

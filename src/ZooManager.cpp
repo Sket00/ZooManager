@@ -16,6 +16,7 @@ namespace ws {
 
     void ZooManager::showAllAnimals() const {
         if (m_animals.empty()) {
+            std::cerr << "No animals in the zoo.\n";
             return;
         }
 
@@ -31,12 +32,11 @@ namespace ws {
         auto it = std::find_if(m_animals.begin(), m_animals.end(), 
             [id](const std::unique_ptr<Animal>& a) { return a->getId() == static_cast<unsigned int>(id); });
 
-        if (it != m_animals.end()) {
-            
+        if (it != m_animals.end()) {   
             Animal::releaseId(id);
             m_animals.erase(it);
         } else {
-            throw std::runtime_error("Animal with ID " + std::to_string(id) + " not found.");
+            std::cerr << "Animal with ID " << id << " not found.\n";
         }
     }
 
@@ -53,7 +53,7 @@ namespace ws {
     void ZooManager::saveToFile(const std::string& filename) const {
         std::ofstream file(filename);
         if (!file.is_open()) {
-            throw std::runtime_error("Cannot open file");
+            std::cerr << "Error opening file: " << filename << "\n";
             return;
         }
 
@@ -66,6 +66,7 @@ namespace ws {
     void ZooManager::loadFromFile(const std::string& filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
+        std::cerr << "Cannot find file: " << filename << " Creating new one." << std::endl;
         return;
     }
 
